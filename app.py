@@ -1,9 +1,10 @@
 # install tkinter, it facilities GUIs
 #  pip install tk
+
 import tkinter as tk
 from tkinter import *
 import tkinter.messagebox
-from flask import Flask
+from flask import Flask, request, render_template, redirect
 
 app = Flask(__name__)
 
@@ -32,13 +33,13 @@ def CurrencyConversion():
 
     from_currency = variable1.get()
     to_currency = variable2.get()
+    alpha = Amount1_field.get()
 
-    if (Amount1_field.get() == ""):
-        tkinter.messagebox.showinfo("Error!", "Amount Not Entered.\n Please enter a valid amount.")
+    if (Amount1_field.get() == "" or alpha.isalpha()):
+        tkinter.messagebox.showinfo("Error!", "Number Not Entered.\n Please enter a valid amount.")
  
     elif (from_currency == "currency" or to_currency == "currency"):
-        tkinter.messagebox.showinfo("Error!",
-                                    "Currency Not Selected.\n Please select FROM and TO Currency from the menu.")
+        tkinter.messagebox.showinfo("Error!", "Currency Not Selected.\n Please select FROM and TO Currency from the menu.")
  
     else:
         new_amt = c.convert(from_currency, to_currency, float(Amount1_field.get()))
