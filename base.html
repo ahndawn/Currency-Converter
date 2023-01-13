@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/app.css">
+    
+    <title>Ahni's Currency Conversion</title>
+</head>
+<body>
+    <h1>Ahni's Currency Conversion</h1>
+    
+    <form action="/" method="POST" id="myform">
+        <h2>From :</h2>
+        <input type="number" placeholder="Enter Amount" name="amount" min="0" value="{{amount}}" required="required">
+        <select required name="from_c" id="from_c">
+            <option value="">Choose Currency</option>
+            {% if from_c %}
+            <option value="{{from_c}}" selected>{{from_c}}</option>
+            {% endif %}
+            Currency_list = ["INR", "USD", "CAD", "CNY", "DKK", "EUR"]
+            <option value="AED">United Arab Emirates Dirham</option>
+            <option value="CAD">Canadian Dollar</option>
+            <option value="CNY">Chinese Yuan</option>
+            <option value="DKK">Danish Krone</option>
+            <option value="EUR">Euro</option>
+            <option value="INR">Indian Rupee</option>
+            <option value="USD">United States Dollar</option>
+   <br>
+        <h2>To :</h2>
+        <input placeholder="To: " readonly id="to">
+        <select required name="to_c" id="to_c">
+            <option value="">Choose Currency</option>
+            <option value="{{to_c}}" selected>{{to_c}}</option>
+            <option value="CAD">Canadian Dollar</option>
+                <option value="CNY">Chinese Yuan</option>
+                <option value="DKK">Danish Krone</option>
+                <option value="EUR">Euro</option>
+                <option value="INR">Indian Rupee</option>
+                <option value="USD">United States Dollar</option>
+        </select>
+        <h2 style="text-align: center;"><input type="submit" style="width: 60px;height: 30px;" value="Convert"></h2>
+    </form>
+     <br>
+     <h2 id="amount">Amount: {{result}}</h2>
+
+</body>
+</html>
