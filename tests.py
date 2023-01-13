@@ -2,7 +2,7 @@ from app import app
 from unittest import TestCase
 
 
-class ConversionTestCase(TestCase):
+class BaseTestClient(TestCase):
    def test_base(self):
         with app.test_client() as client:
         # can now make requests to flask via `client`
@@ -20,3 +20,10 @@ class SessionTest(TestCase):
 
             self.assertEqual(resp.status_code, 200)
             self.assertEqual(session['count'], 1000)
+
+class AmountTestClient(TestCase):
+   def test_amount(self):
+        with app.test_client() as client:
+        # can now make requests to flask via `client`
+            resp = client.get('/')
+            self.assertEqual(resp.status_code, 200)
